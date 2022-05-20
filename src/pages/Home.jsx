@@ -4,7 +4,7 @@ import Navbar from '../components/navbar';
 
 const Home = () => {
   return (
-      <div className='h-screen bg-light'>
+      <div className='lg:h-screen bg-light'>
           <Navbar />
           <Main />
       </div>

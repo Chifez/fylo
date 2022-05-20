@@ -4,7 +4,7 @@ import Register from '../components/register'
 
 const Footer = () => {
   return (
-    <div className='bg-footerbg relative'>
+    <div className='bg-footerbg w-full absolute'>
         <Register />
         <Info />
     </div>

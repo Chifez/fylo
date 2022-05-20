@@ -7,7 +7,7 @@ import Team from './pages/Team';
 
 function App() {
   return (
-    <div className="App  w-full text-white">
+    <div className="App overflow-hidden w-full text-white bg-darkbg">
     <Home />
     <Features />
     <Team />

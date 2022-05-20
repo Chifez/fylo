@@ -5,7 +5,7 @@ import { icons } from '../data'
 const Features = () => {
 const {access,security,real,store} = icons
   return (
-      <div className='h-screen grid grid-cols-2 place-items-center pt-5 bg-darkbg'>
+      <div className='sm:h-screen h-full grid grid-cols-1 gap-10 sm:grid-cols-2 place-items-center sm:pt-5 pt-16 bg-darkbg'>
           <Feature src={access} main='Access your files,anywhere' desc='The ability to use a smartphone,tablet or computer to access your account means ypur files follow you everywhere'/>
 
           <Feature src={security} main='security you can trust' desc ='2-factor authentication and user-controlled encryption are just a couple of the security features we allow to help secure your files'/>

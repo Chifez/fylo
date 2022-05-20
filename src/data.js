@@ -9,6 +9,10 @@
      location:require('./assets/icons/icons8-location-96.png'),
      mail:require('./assets/icons/icons8-mail-96.png'),
      phone:require('./assets/icons/icons8-phone-90.png'),
+     twitter:require('./assets/icons/icons8-twitter-48.png'),
+     instagram:require('./assets/icons/icons8-instagram-52.png'),
+     facebook:require('./assets/icons/icons8-facebook-48 (1).png'),
+
  }
 
  export const desc = {
