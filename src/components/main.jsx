@@ -1,5 +1,6 @@
 import React from 'react'
 import home_img from "../assets/icons/undraw_upload_re_pasx.svg"
+import {Link} from 'react-router-dom'
 
 const Main = () =>  {
   return (
@@ -9,7 +10,7 @@ const Main = () =>  {
         data-aos-duration="2000">All files in one secure location, accessible anywhere.
         </h2> 
         <p className='w-4/5 lg:w-2/5 m-5 '>fylo stores all your most important file in one secure location.Access them wherever you need,share and collaborate with friends family and co-workers</p>
-        <button className='bg-btn rounded-full py-3 px-24 font-semibold lg:py-5 lg:px-20 transition ease-in-out duration-500 lg:hover:bg-blue-300 lg:hover:text-black capitalize'>get started</button>
+        <button className='bg-btn rounded-full py-3 px-24 font-semibold lg:py-5 lg:px-20 transition ease-in-out duration-500 lg:hover:bg-blue-300 lg:hover:text-black capitalize'><Link to='signup'>get started</Link></button>
     </div>
   )
 }

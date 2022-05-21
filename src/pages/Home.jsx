@@ -1,13 +1,25 @@
 import React from 'react'
 import Main from '../components/main';
 import Navbar from '../components/navbar';
+import Features from './Features';
+import Footer from './Footer';
+import Team from './Team';
 
 const Home = () => {
   return (
-      <div className='lg:h-screen bg-light'>
+    <div  className="App overflow-hidden w-full text-white bg-darkbg">
+      <div id='home' className='lg:h-screen bg-light'>
           <Navbar />
           <Main />
       </div>
+      <div>
+            <Features />
+            <Team />
+            <Footer />
+        </div>
+  
+
+    </div>
   )
 }
 

@@ -1,18 +1,18 @@
 import './App.css';
-import Features from './pages/Features';
-import Footer from './pages/Footer';
 import Home from './pages/Home';
-import Team from './pages/Team';
-
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
+import SigninPage from './pages/SigninPage';
+import SignupPage from './pages/SignupPage';
 
 function App() {
   return (
-    <div className="App overflow-hidden w-full text-white bg-darkbg">
-    <Home />
-    <Features />
-    <Team />
-    <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element= {<Home />} />
+        <Route path='/signin' element={<SigninPage />} />
+        <Route path='/signup' element ={<SignupPage />} />
+      </Routes>
+    </Router>
   );
 }
 

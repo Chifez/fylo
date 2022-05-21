@@ -7,7 +7,7 @@ const Team = () => {
     const{team} =desc
 
   return (
-      <div className='px-4 py-3 pb-64 bg-darkbg'>
+      <div id='team' className='px-4 py-3 pb-64 bg-darkbg'>
           <div className=' my-32 grid gap-4 grid-cols-1 lg:grid-cols-2 place-items-center'  data-aos="fade-up" data-aos-duration="1500">
               <img className='w-full h-full border-pool'src ={sync} alt=" " />
               <div className='h-3/5 grid lg:place-items-center'>
@@ -22,9 +22,9 @@ const Team = () => {
 
         
           <div className='grid grid-cols-1 lg:grid-cols-3'>
-                <Teamcard desc = {team} img={account}name ='Satish Patel' title='Founder & CE0, Huddle' duration="1000" />
-                <Teamcard desc ={team} img={account} name ='Bruce Mckenzie' title='Founder & CE0, Huddle' duration="1500" />
-                <Teamcard desc ={team} img={account} name ='Iva Boyd' title='Founder & CE0, Huddle' duration="2000" />
+                <Teamcard desc = {team} img={account}name ='Satish Patel' title='Founder & CE0, Huddle' duration="1500" />
+                <Teamcard desc ={team} img={account} name ='Bruce Mckenzie' title='Founder & CE0, Huddle' duration="2000" />
+                <Teamcard desc ={team} img={account} name ='Iva Boyd' title='Founder & CE0, Huddle' duration="2500" />
           </div>
       </div>
   )
