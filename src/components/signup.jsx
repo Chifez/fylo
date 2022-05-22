@@ -1,27 +1,25 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
-import{Link} from 'react-router-dom'
-import {createUserWithEmailAndPassword} from "firebase/auth";
-import auth from '../fire.js'
 
-const Signup = () => {
-    const [user,setUser] =useState('')
-    const [email,setEmail] =useState('')
-    const [password,setPassword]=useState('')
 
-    const handleLogin =async()=>{
-        await createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          setUser(user)
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-        });
-      }
+// import {createUserWithEmailAndPassword} from "firebase/auth";
+// import auth from '../fire.js'
+
+const Signup = ({setEmail,setPassword,setName,register}) => {
+
+
+    // const handleLogin =async()=>{
+    //     await createUserWithEmailAndPassword(auth, email, password)
+    //     .then((userCredential) => {
+    //       // Signed in 
+    //       const user = userCredential.user;
+    //       setUser(user)
+    //       // ...
+    //     })
+    //     .catch((error) => {
+    //       const errorCode = error.code;
+    //       const errorMessage = error.message;
+    //     });
+    //   }
     
 
 
@@ -29,48 +27,47 @@ const Signup = () => {
   return (
     <form action="submit">
         <div className='my-2 flex flex-col'>
-            <label className='w-5' htmlFor="firstname">firstname</label>
-            <input type="text" name="firstname" placeholder='firstname' required />
+            <label  className='text-white' htmlFor="firstname">firstname</label>
+            <input onChange={(e)=>{setName(e.target.value)}} type="text" name="firstname" placeholder='firstname' required />
         </div>
 
         <div className='my-2 flex flex-col'>
-            <label className='w-5' htmlFor="lastname">lastname</label>
+            <label  className='text-white' htmlFor="lastname">lastname</label>
             <input type="text" name ="lastname" placeholder='lastname' />
         </div>
 
         <div className='my-2 flex flex-col'>
-            <label className='w-5' htmlFor="gender" placeholder='gender'>gender</label>
+            <label  className='text-white' htmlFor="gender" placeholder='gender'>gender</label>
             <select name="gender" id="gender">
-                <option value="">gender</option>
+                <option value="">select a gender</option>
                 <option value="gender">male</option>
                 <option value="gender">female</option>
             </select>
         </div>
 
         <div className='my-2 flex flex-col'>
-            <label className='w-5' htmlFor="age">age</label>
+            <label className='text-white' htmlFor="age">age</label>
             <input type="date" name="age" placeholder='age'/>
         </div>
 
         <div className='my-2 flex flex-col'>
-            <label className='mr-10' htmlFor="email">
+            <label  className='text-white' htmlFor="email">
                 email
             </label>
             <input type="email" name="email" placeholder='email' onChange={(e)=>setEmail(e.target.value)} required />
         </div>
 
         <div className='my-2 flex flex-col'>
-            <label className='w-5' htmlFor="password">
+            <label  className='text-white' htmlFor="password">
                 password
             </label>
             <input type="password" placeholder='password' onChange={(e)=>setPassword(e.target.value)}   required />
             <img src="" alt="" />
         </div>
-        <div className='text-center font-semibold border-2 border-transparent px-16 bg-btn hover:bg-blue-600 hover:text-black'>
-        <button onClick={handleLogin}>sign up</button>
+        <div className='text-center border-2 border-transparent px-16 bg-btn hover:bg-blue-600 hover:text-black'>
+        <button onClick={register} className='font-semibold text-white'>sign up</button>
         </div>
     </form>
   )
 }
-
 export default Signup
