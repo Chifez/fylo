@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Signin = ({setEmail,email,setPassword,password,handleLogin}) => {
+const Signin = ({setEmail,email,setPassword,password,handleLogin,sendPasswordReset}) => {
   
 
   return (
@@ -13,7 +13,7 @@ const Signin = ({setEmail,email,setPassword,password,handleLogin}) => {
         </div>
           <button className='border-2 border-transparent font-semibold px-24 bg-btn text-white hover:bg-blue-600 hover:text-black' onClick={() =>handleLogin(email,password)}>login</button>
           <p>
-              <Link to='/reset' className='text-sm text-gray'>forgot password?</Link>
+              <Link to='/reset' className='text-sm text-gray'>forgot password?</Link> {/*remember to create a reset page*/}
           </p>
       </form>
       </>

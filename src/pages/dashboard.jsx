@@ -1,9 +1,9 @@
 import React from 'react'
-import Dashmain from './dashmain'
+import Dashmain from '../components/dashmain'
 
 const Dashboard = () => {
   return (
-      <div>
+      <div className='bg-darkbg'>
           <nav>
               <div>
                   <img src="" alt="" />
@@ -14,7 +14,7 @@ const Dashboard = () => {
                   <h3>logout</h3>
               </div>
           </nav>
-          <Dashmain />
+          {/* <Dashmain /> */}
           <button> <input type="file" />Add new file</button>
       </div>
   )

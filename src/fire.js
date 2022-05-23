@@ -49,7 +49,7 @@ const handleLogin= async (email, password) => {
         
           // ...
           
-    })
+    });
 }catch(error){
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -88,7 +88,12 @@ const handleLogin= async (email, password) => {
 
 
   const logout = () => {
-    signOut(auth);
+    signOut(auth)
+    .then(()=>{
+
+    }).catch((err)=>{
+        console.error(err)
+    })
   };
 
   export {

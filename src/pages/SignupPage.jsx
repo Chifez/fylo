@@ -1,14 +1,11 @@
 import React from 'react'
 import Signup from '../components/signup'
-import { useState,useEffect } from 'react'
+import { useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {auth, handleSignUp} from "../fire";
 
-const SignupPage = () => {
-    const [email,setEmail] =useState('')
-    const [password,setPassword]=useState('')
-    const [name, setName] = useState("");
+const SignupPage = ({name,email,password,setName,setEmail,setPassword}) => {
     const [user, loading, error] = useAuthState(auth);
 
     const history = useNavigate();
