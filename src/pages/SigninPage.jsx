@@ -1,33 +1,37 @@
 import React from 'react'
-import Signin from '../components/signIn'
-import {Link, useNavigate} from 'react-router-dom'
 import { useEffect } from 'react'
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, signInWithGoogle, handleLogin,sendPasswordReset}from '../fire.js'
+import Signin from '../components/signIn'
+import {Link,useNavigate} from 'react-router-dom'
 
-
-const SigninPage = ({email,setEmail,password,setPassword}) => {
-  const [user, loading, error] = useAuthState(auth);
-
-  const navigate = useNavigate();
-  
- useEffect(()=>{
-   if(loading){
-
-   }if(user) navigate('/dashboard')
- },[user,loading])
-  
+const SigninPage = ({email,user,
+  setEmail,
+  password,
+  setPassword,
+  googleSignIn,
+  handleLogin,
+  error}) => {
+ 
+ const navigate = useNavigate()
+    useEffect(()=>{
+      if (user) navigate('/dashboard')
+    },[user])
 
   return (
     <div id='signin' className='bg-light flex justify-center items-center h-screen text-center '>
-      <div className='border-2 border-darkbg rounded-md p-10 shadow-md shadow-gray-500'>
-        <h2 className='text-xl font-semibold capitalize text-white'>welcome, login</h2>
+      <div className='border-2 border-darkbg rounded-md p-10 '>
+        <h2 className='text-white'>welcome, login</h2>
         <div>
-        <Signin setEmail={setEmail} email={email} setPassword={setPassword} password={password} handleLogin={handleLogin} sendPasswordReset={sendPasswordReset} error={error}/>
-        <p className='text-white'> — OR —</p>
-        <button onClick={()=>signInWithGoogle} className='border-2 font-semibold border-transparent px-10 rounded-full bg-gray-700 text-black'> <img src="" alt="" />continue with google</button>
-        <p className='text-white'>don't have an account ? <Link className='text-yellow-500' to="/signup"> sign up</Link></p>
+        <Signin email ={email}
+          setEmail ={setEmail}
+          password ={password}
+          setPassword ={setPassword}
+          handleLogin ={handleLogin}/>
+        <p>OR</p>
+        <button className='text-white'onClick={googleSignIn}> <img src="" alt="" /><a href="#google">continue with google</a></button>
+        {error && <p>{error}</p>}
+        <p className='text-white'>don't have an account? <Link className='text-yellow' to="/signup">sign up</Link></p>
         </div>
+
       </div>
     </div>
   )
