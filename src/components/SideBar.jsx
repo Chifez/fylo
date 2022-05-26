@@ -11,7 +11,7 @@ const SideBar = ({logOut,name}) => {
               <div className='w-full'>
                 <div className='py-5 my-2 active:border-r-4 text-center active:border-r-lime-400 hover:bg-slate-600'>
                     <img src="" alt="" />
-                    <Link to='settings'>settings</Link>
+                    <Link to='settings'><p>settings</p></Link>
                 </div>
                 <div className='py-5  my-2 text-center active:border-r-4 active:border-r-lime-400 hover:bg-slate-600' onClick={logOut}>
                     <img src="" alt="" />

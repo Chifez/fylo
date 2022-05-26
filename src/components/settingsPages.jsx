@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 
 const Settingspages = () => {
   return (
-    <div>
-         <Link to='password'>
-          <h3>change password</h3>
-        </Link>
-        <Link to='name'>
-          <h4>change username</h4>
-        </Link>
+    <div className='my-5 capitalize'>
+          <h3 className='my-2'>
+            <Link to='password'>change password</Link>
+          </h3>
+          
+        <h4 className='my-2'>
+            <Link to='name'>change username</Link>
+        </h4>
     </div>
   )
 }

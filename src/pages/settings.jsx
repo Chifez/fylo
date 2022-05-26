@@ -10,17 +10,16 @@ const Settings = (email,
 
 
   return (
-    <div className='flex flex-col justify-start items-center'> 
-    <div>
-      <div>
+    
+    <div className='h-screen w-[80vw] p-3 flex flex-col justify-start'>
+      <div className='flex flex-col'>
           <Link to='/dashboard'>
-            <button>back home</button>
+            <button className='bg-pool px-3 py-1 border-2 border-transparent rounded-md'>back home</button>
           </Link>
-            <h3>settings</h3>
+            <h3 className='text-center text-2xl m-5 relative font-semibold capitalize'>settings</h3>
       </div>
        <Outlet />
     </div>
-      </div>
   )
 }
 
