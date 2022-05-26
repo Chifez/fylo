@@ -1,9 +1,9 @@
 import './App.css';
 import Home from './pages/Home';
 import { useState,useEffect } from 'react'
-import {BrowserRouter as Router,Routes,Route, useNavigate} from 'react-router-dom'
+import {Routes,Route, useNavigate} from 'react-router-dom'
 import { signInWithEmailAndPassword,createUserWithEmailAndPassword,GoogleAuthProvider,signOut,signInWithPopup,onAuthStateChanged } from 'firebase/auth';
-import {auth,db} from './fire.js'
+import {auth} from './fire.js'
 import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
 import Dashboard from './pages/dashboard';
@@ -32,10 +32,11 @@ const handleLogin = async () =>{
    await signInWithEmailAndPassword(auth,email,password)
     .then((userCredential)=>{
       const currentUser = userCredential.user;
-      navigate('/dashboard')
-      // setUser(currentUser);
-      // console.log(user)
-      //set the navigation here 
+      navigate('/dashboard');
+      setUser(currentUser);
+      setEmail('')
+      setPassword('')
+      //use toastify to set a successful login 
     })
 
   }catch(error){
@@ -51,9 +52,10 @@ const handleSignUp =async () =>{
     .then((userCredential)=>{
       const currentUser = userCredential.currentUser;
       navigate('/dashboard')
-      // setUser(currentUser);
-      // console.log(user)
-      //set the navigation here
+      setUser(currentUser);
+      setEmail('')
+      setPassword('')
+      //use toastify or an alert system to show succesful login
     })
 
   }
@@ -70,9 +72,9 @@ const googleSignIn =async () => {
     await signInWithPopup(auth,provider)
     .then((result) => {
       navigate('/dashboard')
-      // const currentUser= result.currentUser;
-      // setUser(currentUser)
-      //set the navigation here too
+      const currentUser= result.currentUser;
+      setUser(currentUser)
+      //use toastify to set up a suceesful login 
     })
   }
   catch(error){
@@ -87,8 +89,6 @@ const logOut =async()=>{
    await signOut(auth)
     .then(()=>{
       navigate('/signin')
-      // setUser('')
-      // console.log(user)
       //probably set an alert to show the sign out was successful and also navigate out
     })
 
@@ -99,18 +99,18 @@ const logOut =async()=>{
   }
 }
 
-  useEffect (() =>{
-    if (user){
+  // useEffect (() =>{
+  //   if (user){
       
-    }
-  },[user])
+  //   }
+  // },[user])
 
   return (
    
       <Routes>
         <Route path='/' element= {<Home />} />
         
-        <Route path='/signin' element={<SigninPage
+        <Route path='signin' element={<SigninPage
           email ={email}
           setEmail ={setEmail}
           password ={password}
@@ -120,7 +120,7 @@ const logOut =async()=>{
           handleLogin ={handleLogin }
           />} />
 
-        <Route path='/signup' element ={<SignupPage 
+        <Route path='signup' element ={<SignupPage 
           email ={email}
           setEmail ={setEmail}
           password ={password}
@@ -132,14 +132,24 @@ const logOut =async()=>{
 
         />} />
 
-        <Route path='/dashboard' element={<Dashboard
+        <Route path='dashboard/*' element={<Dashboard
          name={name}
          logOut={logOut}
+         email ={email}
+         setEmail ={setEmail}
+         password ={password}
+         setPassword ={setPassword}
+         setName={setName}
+         setError={setError}
+         error={error}
+
          />} />
 
-        <Route path='/reset' element={<Reset 
+        <Route path='reset' element={<Reset 
           email ={email}
           setEmail ={setEmail}
+          error={error}
+          setError={setError}
         />} />
       </Routes>
   );

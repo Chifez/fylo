@@ -16,7 +16,7 @@ const Signin = ({ email,
         </div>
           <button onClick={handleLogin} className='border-2 border-transparent font-semibold px-24 bg-btn text-white hover:bg-blue-600 hover:text-black'>login</button>
           <p>
-              <Link to='/reset' className='text-sm text-gray'>forgot password?</Link> {/*remember to create a reset page*/}
+              <Link to='/reset' className='text-sm text-gray'>forgot password ?</Link> {/*remember to create a reset page*/}
           </p>
       </form>
       </>
