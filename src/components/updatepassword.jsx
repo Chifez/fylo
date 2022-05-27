@@ -45,7 +45,7 @@ const Updatepassword = ({email,
   return (
     <div className='mx-auto flex justify-center items-center bg-light h-[40vh] w-[40vw]'>
          <form action="submit" className='flex flex-col justify-center items-center  '>
-            <h3 className='p-3 font-semibold text-xl text-white'>change password</h3>
+            <h3 className='p-3 font-semibold text-xl text-white capitalize'>change password</h3>
             <div className='flex flex-col m-3'>
             <label htmlFor="passsword" className='text-white font-medium capitalize'>password</label>
             <input className=' px-2 text-lg outline-none' type="text"  onChange={(e)=>setChangePassword(e.target.value)}/>

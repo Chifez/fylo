@@ -1,7 +1,5 @@
 import React from 'react'
-import { Routes,Route,Outlet,Link } from 'react-router-dom'
-// import Updatepassword from '../components/updatepassword'
-// import Changename from '../components/changename'
+import { Outlet,Link } from 'react-router-dom'
 
 const Settings = (email,
     setEmail,

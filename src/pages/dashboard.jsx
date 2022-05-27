@@ -1,6 +1,5 @@
-import React from 'react'
-import {useEffect,useState} from 'react'
-import { Link,useNavigate,Routes,Route } from 'react-router-dom'
+import React,{useEffect,useState} from 'react'
+import { useNavigate,Routes,Route } from 'react-router-dom'
 import Dashmain from '../components/dashmain'
 import SideBar from '../components/SideBar'
 import Settings from './settings'
@@ -14,15 +13,15 @@ const Dashboard = ({name,setName,logOut,user,email,
     setPassword,error,setError}) => {
     const [upload, setUpload] = useState([])
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    // useEffect(() =>{
-    //     if(user){
-    //         navigate('/dashboard')
-    //     }else{
-    //         navigate('/signin')
-    //     }
-    // })
+    useEffect(() =>{
+        if(user){
+            navigate('/dashboard')
+        }else{
+            navigate('/signin')
+        }
+    })
   
   return (
       <div className='h-screen grid grid-flow-col grid-cols-5 w-screen'>
@@ -31,11 +30,12 @@ const Dashboard = ({name,setName,logOut,user,email,
                     <Route index element={<Dashmain upload={upload} setUpload={setUpload} />} />
                     <Route path='/settings/*' element ={<Settings
                       />}> 
+                      
                         <Route index element={<Settingspages />} />
 
                         <Route path='name' element={<Changename  
-                            setName={setName} 
-                            name={name}  />} />
+                        setName={setName} 
+                        name={name}  />} />
 
                         <Route path= 'password' element={<Updatepassword
                         email ={email}
@@ -45,6 +45,7 @@ const Dashboard = ({name,setName,logOut,user,email,
                         error={error}
                         setError={setError}
                         />} />
+
                     </Route>
 
               </Route>

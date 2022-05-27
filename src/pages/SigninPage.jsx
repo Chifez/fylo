@@ -14,7 +14,7 @@ const SigninPage = ({email,user,
  const navigate = useNavigate()
     useEffect(()=>{
       if (user) navigate('/dashboard')
-    },[user])
+    },[])
 
   return (
     <div id='signin' className='bg-light flex justify-center items-center h-screen text-center '>
@@ -28,7 +28,7 @@ const SigninPage = ({email,user,
           handleLogin ={handleLogin}/>
         <p>OR</p>
         <button className='text-white'onClick={googleSignIn}> <img src="" alt="" /><p>continue with google</p></button>
-        {error && <p>{error}</p>}
+        {/* {error && <p>{error}</p>} */}
         <p className='text-white'>don't have an account? <Link className='text-[yellow]' to="/signup">sign up</Link></p>
         </div>
 

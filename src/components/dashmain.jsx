@@ -1,10 +1,9 @@
 import React from 'react'
 
-
 const Dashmain = ({upload,setUpload}) => {
   return (
 
-    <div className='h-screen w-full col-span-4 bg-white'>
+    <div className='h-[80vh] w-full col-span-4 bg-white mt-10'>
     <h3 className='text-center font-semibold text-xl text-black uppercase'>My files</h3>
     <div className='flex justify-center items-center h-5/6 w-full'>
       {upload.length <= 0 && <div>No Files</div>}

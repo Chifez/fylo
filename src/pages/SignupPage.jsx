@@ -26,7 +26,7 @@ const SignupPage = ({ email,
           handleSignUp={handleSignUp}
 />
           <div className='text-center'>
-          {error && <p>{error}</p>}
+          {/* {error && <p>{error}</p>} */}
           <p className='text-white'>already have an account ?<Link to='/signin' className='text-yellow-500' > sign In</Link></p>
           </div>
         </div>
