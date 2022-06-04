@@ -15,7 +15,7 @@ const SignupPage = ({ email,
   
   return (
     <div className='bg-light flex items-center justify-center h-screen '>
-        <div className='border-2 border-darkbg rounded-md p-10 shadow-md shadow-gray-500 '>
+        <div className='border-2 border-darkbg rounded-md p-10 '>
           <h2 className='text-center text-xl font-semibold capitalize text-white'>sign up</h2>
           <Signup  email ={email}
           setEmail ={setEmail}

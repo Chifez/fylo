@@ -21,7 +21,7 @@ const Dashboard = ({name,setName,logOut,user,email,
         }else{
             navigate('/signin')
         }
-    })
+    },[])
   
   return (
       <div className='h-screen grid grid-flow-col grid-cols-5 w-screen'>

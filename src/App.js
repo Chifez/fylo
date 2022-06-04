@@ -33,8 +33,8 @@ const handleLogin = async () =>{
     try{
      await signInWithEmailAndPassword(auth,email,password)
       .then((userCredential)=>{
-        setEmail('')
-        setPassword('')
+        // setEmail('')
+        // setPassword('')
         const currentUser = userCredential.user;
         navigate('/dashboard');
         setUser(currentUser);
@@ -53,8 +53,8 @@ const handleSignUp =async () =>{
   try{
    await createUserWithEmailAndPassword(auth,email,password)
     .then((userCredential)=>{
-      setEmail('')
-      setPassword('')
+      // setEmail('')
+      // setPassword('')
       const currentUser = userCredential.currentUser;
       navigate('/dashboard')
       setUser(currentUser);
