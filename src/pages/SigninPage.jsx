@@ -25,7 +25,8 @@ const SigninPage = ({email,user,
           setEmail ={setEmail}
           password ={password}
           setPassword ={setPassword}
-          handleLogin ={handleLogin}/>
+          handleLogin ={handleLogin}
+          user={user}/>
         <p>OR</p>
         <button className='text-white'onClick={googleSignIn}> <img src="" alt="" /><p>continue with google</p></button>
         {/* {error && <p>{error}</p>} */}

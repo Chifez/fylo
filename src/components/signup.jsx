@@ -12,7 +12,7 @@ const Signup = ({email,
 
 
   return (
-    <form action="submit">
+    <form>
         <div className='my-2 flex flex-col'>
             <label  className='text-white' htmlFor="firstname">firstname</label>
             <input className='outline-none' value={name} onChange={(e)=>{setName(e.target.value)}} type="text" name="firstname" placeholder='firstname' required />
@@ -52,7 +52,7 @@ const Signup = ({email,
             <img src="" alt="" />
         </div>
         <div className='text-center border-2 border-transparent px-16 bg-btn hover:bg-blue-600 hover:text-black'>
-        <button onClick={handleSignUp} className='font-semibold text-white'>sign up</button>
+        <button onClick={(e)=>handleSignUp(e)} className='font-semibold text-white'>sign up</button>
         </div>
     </form>
   )

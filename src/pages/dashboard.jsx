@@ -18,10 +18,9 @@ const Dashboard = ({name,setName,logOut,user,email,
     useEffect(() =>{
         if(user){
             navigate('/dashboard')
-        }else{
-            navigate('/signin')
         }
-    },[])
+        console.log(user)
+    },[user])
   
   return (
       <div className='h-screen grid grid-flow-col grid-cols-5 w-screen'>

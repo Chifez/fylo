@@ -15,15 +15,12 @@ function App() {
     const [name, setName] = useState("");
     const[user,setUser] =useState('');
     const[error,setError] = useState('');
+
     const navigate =useNavigate();
 
     useEffect(()=>{
       onAuthStateChanged(auth,(currentUser)=>{
-        if(currentUser !== user){
           setUser(currentUser)
-        }else{
-          setUser('')
-        }
       })
       console.log(user)
       },[])
@@ -33,11 +30,11 @@ const handleLogin = async () =>{
     try{
      await signInWithEmailAndPassword(auth,email,password)
       .then((userCredential)=>{
-        // setEmail('')
-        // setPassword('')
-        const currentUser = userCredential.user;
-        navigate('/dashboard');
+        const currentUser = userCredential.currentUser;
         setUser(currentUser);
+        navigate('/dashboard');
+        setPassword('')
+        setEmail('')
         //use toastify to set a successful login 
       })
     }catch(error){
@@ -49,16 +46,16 @@ const handleLogin = async () =>{
     
   }
 
-const handleSignUp =async () =>{
+const handleSignUp = async(e) =>{
+  e.preventDefault()
   try{
    await createUserWithEmailAndPassword(auth,email,password)
     .then((userCredential)=>{
-      // setEmail('')
-      // setPassword('')
-      const currentUser = userCredential.currentUser;
+      const currentUser = userCredential.user;
       navigate('/dashboard')
       setUser(currentUser);
-      
+      // setPassword('')
+      // setEmail('')
       //use toastify or an alert system to show succesful login
     })
 
@@ -94,6 +91,7 @@ const logOut =async()=>{
    await signOut(auth)
     .then(()=>{
       navigate('/signin')
+      setUser('');
       //probably set an alert to show the sign out was successful and also navigate out
     })
 
@@ -141,6 +139,7 @@ const logOut =async()=>{
          setName={setName}
          setError={setError}
          error={error}
+         user={user}
          />} />
 
         <Route path='reset' element={<Reset 
