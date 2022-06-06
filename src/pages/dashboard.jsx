@@ -10,10 +10,24 @@ import Settingspages from '../components/settingsPages'
 const Dashboard = ({name,setName,logOut,user,email,
     setEmail,
     password,
-    setPassword,error,setError}) => {
-    const [upload, setUpload] = useState([])
+    setPassword,error,setError,changeProfile}) => {
+    const [upload, setUpload] = useState(null)
+    const[uploadList,setUploadList] = useState([{}])
 
+
+    const uploadFile =()=>{
+        if (upload === null) return;
+        else{
+            console.log(upload.name)
+            const list = upload
+            setUploadList([...uploadList, {list}]);
+    }
+    }
     const navigate = useNavigate();
+
+    // useEffect(()=>{
+        
+    // },[upload])
 
     useEffect(() =>{
         if(user){
@@ -25,8 +39,8 @@ const Dashboard = ({name,setName,logOut,user,email,
   return (
       <div className='h-screen grid grid-flow-col grid-cols-5 w-screen'>
           <Routes>
-              <Route path='/' element={<SideBar name={name}  logOut={logOut}/>}>
-                    <Route index element={<Dashmain upload={upload} setUpload={setUpload} />} />
+              <Route path='/' element={<SideBar name={name}  logOut={logOut} changeProfile={changeProfile}/>}>
+                    <Route index element={<Dashmain upload={upload} setUpload={setUpload} uploadList={uploadList} setUploadList={setUploadList}uploadFile={uploadFile}/>} />
                     <Route path='/settings/*' element ={<Settings
                       />}> 
                       

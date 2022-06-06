@@ -2,7 +2,7 @@ import './App.css';
 import Home from './pages/Home';
 import { useState,useEffect } from 'react'
 import {Routes,Route, useNavigate} from 'react-router-dom'
-import { signInWithEmailAndPassword,createUserWithEmailAndPassword,GoogleAuthProvider,signOut,signInWithPopup,onAuthStateChanged } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signOut, signInWithPopup, onAuthStateChanged, updateProfile } from 'firebase/auth';
 import {auth} from './fire.js'
 import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
@@ -46,6 +46,21 @@ const handleLogin = async () =>{
     
   }
 
+  const changeProfile = async ()=>{
+    try{
+     await updateProfile (auth.currentUser,{
+       displayName: name,
+     }).then((res)=>{
+    
+     })
+    }catch(error){
+    const errorMessage = error.message;
+    alert(`${errorMessage}`)
+    }
+  }
+
+
+
 const handleSignUp = async(e) =>{
   e.preventDefault()
   try{
@@ -54,6 +69,8 @@ const handleSignUp = async(e) =>{
       const currentUser = userCredential.user;
       navigate('/dashboard')
       setUser(currentUser);
+      // sessionStorage.setItem( 'userName', name);
+  
       // setPassword('')
       // setEmail('')
       //use toastify or an alert system to show succesful login
@@ -66,6 +83,8 @@ const handleSignUp = async(e) =>{
     // setError(errorCode && errorMessage);
   }
 }
+
+
 
 const googleSignIn =async () => {
   try{
@@ -140,6 +159,7 @@ const logOut =async()=>{
          setError={setError}
          error={error}
          user={user}
+         changeProfile={changeProfile}
          />} />
 
         <Route path='reset' element={<Reset 

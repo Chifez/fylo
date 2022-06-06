@@ -1,12 +1,16 @@
 import React from 'react'
 import { Link,Outlet } from 'react-router-dom'
 
-const SideBar = ({logOut,name}) => {
+const SideBar = ({logOut,name,changeProfile}) => {
+  // const userName = sessionStorage.getItem('userName');
+  // const userName = changeProfile();
   return (
     <> <nav className='bg-darkbg col-span-1 py-10 flex flex-col justify-between items-center font-semibold text-xl capitalize text-white cursor-pointer'>
               <div>
                   <img src="" alt="" />
-                  <h3 className='capitalize'>hello, {name}</h3>
+                  <h3 className='capitalize'>hello,
+                  {/* {userName} */}
+                  </h3>
               </div>
               <div className='w-full'>
                 <div className='py-5 my-2 active:border-r-4 text-center active:border-r-lime-400 hover:bg-slate-600'>
