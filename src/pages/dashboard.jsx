@@ -12,16 +12,21 @@ const Dashboard = ({name,setName,logOut,user,email,
     password,
     setPassword,error,setError,changeProfile}) => {
     const [upload, setUpload] = useState(null)
-    const[uploadList,setUploadList] = useState([{}])
+    const [uploadList,setUploadList] = useState([{}])
 
 
     const uploadFile =()=>{
         if (upload === null) return;
         else{
             console.log(upload.name)
-            const list = upload
-            setUploadList([...uploadList, {list}]);
-    }
+            console.log(upload)
+            const list = upload.name
+            setUploadList([...uploadList,{list}]);
+            
+            console.log(list)
+        }
+        console.log([uploadList])
+        console.log([{...uploadList?.list}])
     }
     const navigate = useNavigate();
 
@@ -60,10 +65,10 @@ const Dashboard = ({name,setName,logOut,user,email,
                         />} />
 
                     </Route>
-
               </Route>
           </Routes>    
       </div>
   )
 }
+
 export default Dashboard

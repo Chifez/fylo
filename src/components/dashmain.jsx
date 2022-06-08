@@ -7,17 +7,16 @@ const Dashmain = ({upload,setUpload,uploadList,setUploadList,uploadFile}) => {
 
     <div className='h-[80vh] w-full col-span-4 bg-white mt-10'>
     <h3 className='text-center font-semibold text-xl text-black uppercase'>My files</h3>
-    <p>{uploadList}</p>
+    {/* <p>{uploadList}</p> */}
     <div className='flex justify-center items-center h-5/6 w-full'>
       {uploadList === null && <div>No Files</div>}
       {uploadList && uploadList.map((item) =>
               <div key={Math.floor(Math.random() * 3)}>
-                <h2>{item?.item?.name} resume</h2>
+                <h2>{item?.name} resume</h2>
                 {/* <img src={item.share} alt="share" />
                 <img src={item.delete} alt="delete" /> */}
                 <div>
                     <p>uploaded {Date.now()}</p>
-                   
                 </div>
               </div>
       )}
@@ -27,7 +26,6 @@ const Dashmain = ({upload,setUpload,uploadList,setUploadList,uploadFile}) => {
       <button className='bg-[green] my-4 px-12 rounded-md' onClick={uploadFile}>upload file</button>
   </div>
 </div>
-    
   )
 }
 
