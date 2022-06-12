@@ -1,5 +1,7 @@
-import React,{useEffect,useState} from 'react'
+import React,{ useEffect,useState } from 'react'
 import { useNavigate,Routes,Route } from 'react-router-dom'
+import {storage} from '../fire.js'
+import{ ref, getDownloadURL, uploadBytesResumable } from "firebase/storage"
 import Dashmain from '../components/dashmain'
 import SideBar from '../components/SideBar'
 import Settings from './settings'
@@ -12,21 +14,45 @@ const Dashboard = ({name,setName,logOut,user,email,
     password,
     setPassword,error,setError,changeProfile}) => {
     const [upload, setUpload] = useState(null)
-    const [uploadList,setUploadList] = useState([{}])
+    const [uploadList,setUploadList] = useState([])
+    const [uploadProgress,setUploadProgress] =useState(0)
+    const [imgURL,setImgURL] = useState(null);
 
 
-    const uploadFile =()=>{
+    const uploadFile =(e)=>{
+        e.preventDefault();
+        setUpload(null);
         if (upload === null) return;
         else{
-            console.log(upload.name)
+            // console.log(upload.name)
             console.log(upload)
-            const list = upload.name
-            setUploadList([...uploadList,{list}]);
-            
-            console.log(list)
+            const file = upload
+            console.log(file.name)
+            setUploadList([...uploadList,file]);
+            console.log(file)
+            // any error that occurs would most likely be from here
+
+            const storageRef = ref(storage,`files/${file.name}`)
+            const uploadTask = uploadBytesResumable(storageRef,file)
+            uploadTask.on('state_changed',(snapshot)=>{
+                const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                setUploadProgress(progress)
+            },
+            (error)=>{
+             alert(error)
+            },
+            () =>{
+                getDownloadURL(uploadTask.snapshot.ref)
+                .then((downloadURL) =>{
+                    setImgURL(downloadURL)
+                })
+            }
+         )
         }
-        console.log([uploadList])
-        console.log([{...uploadList?.list}])
+       
+        // console.log([uploadList])
+        // console.log([{...uploadList?.list}])
+
     }
     const navigate = useNavigate();
 
