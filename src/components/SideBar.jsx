@@ -2,14 +2,14 @@ import React from 'react'
 import { Link,Outlet } from 'react-router-dom'
 
 const SideBar = ({logOut,name,changeProfile}) => {
-  // const userName = sessionStorage.getItem('userName');
+  const userName = sessionStorage.getItem('userName');
   // const userName = changeProfile();
   return (
     <> <nav className='bg-darkbg col-span-1 py-10 flex flex-col justify-between items-center font-semibold text-xl capitalize text-white cursor-pointer'>
               <div>
                   <img src="" alt="" />
                   <h3 className='capitalize'>hello,
-                  {/* {userName} */}
+                  {userName}
                   </h3>
               </div>
               <div className='w-full'>

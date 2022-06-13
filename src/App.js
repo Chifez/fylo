@@ -8,6 +8,7 @@ import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
 import Dashboard from './pages/dashboard';
 import Reset from './pages/Reset';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
     const [email,setEmail] =useState('');
@@ -23,15 +24,17 @@ function App() {
           setUser(currentUser)
       })
       console.log(user)
-      },[])
-      
+      },[user])
+    
 
-const handleLogin = async () =>{
+  const handleLogin = async () =>{
     try{
      await signInWithEmailAndPassword(auth,email,password)
       .then((userCredential)=>{
         const currentUser = userCredential.currentUser;
         setUser(currentUser);
+        console.log(user)
+        localStorage.setItem("isAuthenticated", "true");
         navigate('/dashboard');
         setPassword('')
         setEmail('')
@@ -67,9 +70,10 @@ const handleSignUp = async(e) =>{
    await createUserWithEmailAndPassword(auth,email,password)
     .then((userCredential)=>{
       const currentUser = userCredential.user;
+      localStorage.setItem("isAuthenticated", "true");
       navigate('/dashboard')
       setUser(currentUser);
-      // sessionStorage.setItem( 'userName', name);
+      sessionStorage.setItem("userName", name, [...name]);
   
       // setPassword('')
       // setEmail('')
@@ -110,6 +114,8 @@ const logOut =async()=>{
    await signOut(auth)
     .then(()=>{
       navigate('/signin')
+      localStorage.setItem("isAuthenticated", "false");
+      // sessionStorage.removeItem("userName")
       setUser('');
       //probably set an alert to show the sign out was successful and also navigate out
     })
@@ -121,6 +127,7 @@ const logOut =async()=>{
     // setError(errorMessage);
   }
 }
+
 
   return (
    
@@ -148,19 +155,24 @@ const logOut =async()=>{
           error={error}
         />} />
 
-        <Route path='dashboard/*' element={<Dashboard
-         name={name}
-         logOut={logOut}
-         email ={email}
-         setEmail ={setEmail}
-         password ={password}
-         setPassword ={setPassword}
-         setName={setName}
-         setError={setError}
-         error={error}
-         user={user}
-         changeProfile={changeProfile}
-         />} />
+        <Route path='dashboard/*' element={
+          <ProtectedRoute> 
+              <Dashboard
+                    name={name}
+                    logOut={logOut}
+                    email ={email}
+                    setEmail ={setEmail}
+                    password ={password}
+                    setPassword ={setPassword}
+                    setName={setName}
+                    setError={setError}
+                    error={error}
+                    user={user}
+                    changeProfile={changeProfile}
+               />
+      </ProtectedRoute>}
+        
+        />
 
         <Route path='reset' element={<Reset 
           email ={email}

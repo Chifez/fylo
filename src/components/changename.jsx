@@ -2,7 +2,7 @@ import React,{useState}from 'react'
 import { Link } from 'react-router-dom'
 
 const Changename = ({setName}) => {
- const[updateName,setUpdateName] = useState("")
+ const[updateName, setUpdateName] = useState("")
 
  
   return (
@@ -13,9 +13,9 @@ const Changename = ({setName}) => {
         <input type="text" onChange={(e)=>setUpdateName(e.target.value)}/>
       </div>
         <button className='px-2 py-1 m-2 bg-btn rounded-md font-medium capitalize' 
-        // onClick={
-          // ()=>{sessionStorage.setItem('userName', updateName)}
-          // }
+        onClick={
+          ()=>{sessionStorage.setItem("userName", updateName)}
+          }
           >update name</button>
         <button className='text-[yellow] underline'><Link to ='/dashboard/settings'>back to settings</Link></button>
     </div>

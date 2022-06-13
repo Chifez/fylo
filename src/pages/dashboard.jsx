@@ -10,9 +10,7 @@ import Changename from '../components/changename'
 import Settingspages from '../components/settingsPages'
 
 const Dashboard = ({name,setName,logOut,user,email,
-    setEmail,
-    password,
-    setPassword,error,setError,changeProfile}) => {
+    setEmail, password, setPassword, error, setError, changeProfile}) => {
     const [upload, setUpload] = useState(null)
     const [uploadList,setUploadList] = useState([])
     const [uploadProgress,setUploadProgress] =useState(0)
@@ -64,7 +62,6 @@ const Dashboard = ({name,setName,logOut,user,email,
         if(user){
             navigate('/dashboard')
         }
-        console.log(user)
     },[user])
   
   return (
