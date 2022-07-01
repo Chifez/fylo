@@ -17,7 +17,7 @@ const Signup = ({email,
     <form>
         <div className='my-2 flex flex-col'>
             <label  className='text-white' htmlFor="firstname">firstname</label>
-            <input className='outline-none' value={name} onChange={(e)=>{setName(e.target.value)}} type="text" name="firstname" placeholder='firstname' required />
+            <input className='outline-none' value={name} onChange={(e)=>{setName(e.target.value)} }type="text" name="firstname" placeholder='firstname' required />
         </div>
 
         <div className='my-2 flex flex-col'>

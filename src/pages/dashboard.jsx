@@ -76,7 +76,8 @@ const Dashboard = ({name,setName,logOut,user,email,
 
                         <Route path='name' element={<Changename  
                         setName={setName} 
-                        name={name}  />} />
+                        name={name}  
+                        changeProfile={changeProfile}/>} />
 
                         <Route path= 'password' element={<Updatepassword
                         email ={email}
@@ -85,6 +86,7 @@ const Dashboard = ({name,setName,logOut,user,email,
                         setPassword ={setPassword}
                         error={error}
                         setError={setError}
+                        changeProfile={changeProfile}
                         />} />
 
                     </Route>

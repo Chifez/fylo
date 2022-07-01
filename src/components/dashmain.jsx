@@ -2,6 +2,11 @@ import React from 'react'
 
 const Dashmain = ({upload,setUpload,uploadList,setUploadList,uploadFile}) => {
 
+  let newDate = new Date().toLocaleDateString();
+  // let date = newDate.getDate();
+  // let month = newDate.getMonth() + 1;
+  // let year = newDate.getFullYear();
+  
  
   return (
 
@@ -17,7 +22,7 @@ const Dashmain = ({upload,setUpload,uploadList,setUploadList,uploadFile}) => {
                 {/* <img src={item.share} alt="share" />
                 <img src={item.delete} alt="delete" /> */}
                 <div>
-                    <p>uploaded {Date.now()}</p>
+                    <p>uploaded {newDate}</p>
                 </div>
               </div>
       )}

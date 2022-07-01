@@ -19,22 +19,25 @@ function App() {
 
     const navigate =useNavigate();
 
+    /************** check for authentication state change using ***********/
     useEffect(()=>{
       onAuthStateChanged(auth,(currentUser)=>{
           setUser(currentUser)
+          setName(user?.displayName);
       })
       console.log(user)
       },[user])
+      /*****************************/
     
 
+      /************** handle login *************/
   const handleLogin = async () =>{
     try{
      await signInWithEmailAndPassword(auth,email,password)
       .then((userCredential)=>{
         const currentUser = userCredential.currentUser;
         setUser(currentUser);
-        console.log(user)
-        localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("isAuthenticated",'true');
         navigate('/dashboard');
         setPassword('')
         setEmail('')
@@ -45,10 +48,12 @@ function App() {
       alert(`${errorMessage}`)
       // setError(errorCode && errorMessage);
     }
-  
-    
   }
+/*****************************/
 
+
+
+  /********* Change userprofile ********/
   const changeProfile = async ()=>{
     try{
      await updateProfile (auth.currentUser,{
@@ -61,20 +66,21 @@ function App() {
     alert(`${errorMessage}`)
     }
   }
+/*****************************/
 
 
 
+/**************Handling signup***********/
 const handleSignUp = async(e) =>{
   e.preventDefault()
   try{
    await createUserWithEmailAndPassword(auth,email,password)
     .then((userCredential)=>{
+      changeProfile();
       const currentUser = userCredential.user;
-      localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("isAuthenticated",'true');
       navigate('/dashboard')
       setUser(currentUser);
-      sessionStorage.setItem("userName", name, [...name]);
-  
       // setPassword('')
       // setEmail('')
       //use toastify or an alert system to show succesful login
@@ -87,9 +93,10 @@ const handleSignUp = async(e) =>{
     // setError(errorCode && errorMessage);
   }
 }
+/*****************************/
 
 
-
+/**************Google signup***********/
 const googleSignIn =async () => {
   try{
     const provider = new GoogleAuthProvider();
@@ -108,14 +115,16 @@ const googleSignIn =async () => {
   }
 
 }
+/*****************************/
 
+
+/************** Logout ***********/
 const logOut =async()=>{
   try{
    await signOut(auth)
     .then(()=>{
       navigate('/signin')
-      localStorage.setItem("isAuthenticated", "false");
-      // sessionStorage.removeItem("userName")
+      localStorage.setItem("isAuthenticated",'false');
       setUser('');
       //probably set an alert to show the sign out was successful and also navigate out
     })
@@ -127,6 +136,7 @@ const logOut =async()=>{
     // setError(errorMessage);
   }
 }
+/*****************************/
 
 
   return (
