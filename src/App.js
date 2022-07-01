@@ -19,6 +19,7 @@ function App() {
 
     const navigate =useNavigate();
 
+    
     /************** check for authentication state change using ***********/
     useEffect(()=>{
       onAuthStateChanged(auth,(currentUser)=>{
@@ -27,7 +28,7 @@ function App() {
       })
       console.log(user)
       },[user])
-      /*****************************/
+      /***********************************/
     
 
       /************** handle login *************/

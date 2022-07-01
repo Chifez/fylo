@@ -12,7 +12,8 @@ const Updatepassword = ({email,
  const [changePassword,setChangePassword] = useState('');
  const [confirmPassword,setconfirmPassword] = useState('');
 
- const newPassword =()=>{
+ const newPassword =(e)=>{
+    e.preventDefault();
      if (changePassword.length >= 6 && confirmPassword.length >= 6 ){   
          if(changePassword === confirmPassword){
             setPassword(confirmPassword)
@@ -25,15 +26,32 @@ const Updatepassword = ({email,
             alert("password must be 6 or more characters long")
         }
  }
+
  const passwordUpdate =async(e)=>{
-    e.preventDefault();
-    // newPassword();
-    console.log(newPassword(e));
+    newPassword(e);
+        // const testPassword =  newPassword(e);
+    // newPassword(e);
+    if (password!== ''){
+        try{
+        const user = auth.currentUser;
+        await updatePassword(user,password)
+        .then(()=>{
+            alert('password change successful')
+        })
+    }
+    catch(error){
+        alert('something went wrong')
+    }
+        console.log(password)
+    }else{
+        alert('opps')
+    }
+    console.log(password);
  }
 
- useEffect(()=>{
-    passwordUpdate();
- },[])
+//  useEffect((e)=>{
+//     passwordUpdate(e);
+//  },[])
         
   return (
     <div className='mx-auto flex justify-center items-center bg-light h-[40vh] w-[40vw]'>
