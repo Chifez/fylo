@@ -2,7 +2,7 @@ import React from 'react'
 
 const Dashmain = ({upload,setUpload,uploadList,setUploadList,uploadFile}) => {
 
-  let newDate = new Date().toLocaleDateString();
+  const newDate = new Date().toLocaleDateString();
   // let date = newDate.getDate();
   // let month = newDate.getMonth() + 1;
   // let year = newDate.getFullYear();
@@ -16,13 +16,18 @@ const Dashmain = ({upload,setUpload,uploadList,setUploadList,uploadFile}) => {
     <div className='flex flex-col justify-start items-start h-5/6 w-full px-3 border-2 border-[red] overflow-y-scroll'>
       {uploadList === null && <div>No Files</div>}
       {uploadList && uploadList.map((item) =>
-              <div key={Math.floor(Math.random() * 3)} className="flex flex-row justify-between m-5">
+              <div key={Math.floor(Math.random() * 3)} className="flex flex-col justify-between m-5">
+                <div className='flex flex-col'>
+                  <div>
                 <h2>{item?.name} </h2>
-                <h2>resume</h2>
                 {/* <img src={item.share} alt="share" />
-                <img src={item.delete} alt="delete" /> */}
-                <div>
-                    <p>uploaded {newDate}</p>
+                  <img src={item.delete} alt="delete" /> */}
+                  </div>
+                <h2>resume</h2>
+                </div>
+                <div className='flex justify-between'>
+                    <p className='mr-2'>uploaded</p>
+                    <p>{newDate}</p>
                 </div>
               </div>
       )}
