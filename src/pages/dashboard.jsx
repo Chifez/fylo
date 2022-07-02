@@ -65,7 +65,7 @@ const Dashboard = ({name,setName,logOut,user,email,
     },[user])
   
   return (
-      <div className='h-screen grid grid-flow-col grid-cols-5 w-screen'>
+      <div className='h-screen md:grid grid-rows-5 grid-flow-row md:grid-flow-col md:grid-cols-5 md:w-screen'>
           <Routes>
               <Route path='/' element={<SideBar name={name}  logOut={logOut} changeProfile={changeProfile}/>}>
                     <Route index element={<Dashmain upload={upload} setUpload={setUpload} uploadList={uploadList} setUploadList={setUploadList}uploadFile={uploadFile}/>} />

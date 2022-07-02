@@ -19,16 +19,15 @@ function App() {
 
     const navigate =useNavigate();
 
-    
     /************** check for authentication state change using ***********/
     useEffect(()=>{
       onAuthStateChanged(auth,(currentUser)=>{
-          setUser(currentUser)
+          setUser(currentUser);
           setName(user?.displayName);
       })
       console.log(user)
       },[user])
-      /***********************************/
+      /*****************************/
     
 
       /************** handle login *************/
@@ -76,17 +75,17 @@ const handleSignUp = async(e) =>{
   e.preventDefault()
   try{
    await createUserWithEmailAndPassword(auth,email,password)
-    .then((userCredential)=>{
-      changeProfile();
+   .then((userCredential)=>{
       const currentUser = userCredential.user;
+      changeProfile();
+      setUser(currentUser);
+      setName(user?.displayName);
       localStorage.setItem("isAuthenticated",'true');
       navigate('/dashboard')
-      setUser(currentUser);
       // setPassword('')
       // setEmail('')
       //use toastify or an alert system to show succesful login
     })
-
   }
   catch(error){
     const errorMessage = error.message;
