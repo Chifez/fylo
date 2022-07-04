@@ -27,10 +27,7 @@ const Updatepassword = ({email,
         }
  }
 
- const passwordUpdate =async(e)=>{
-//    await newPassword(e);
-        // const testPassword =  newPassword(e);
-    // newPassword(e);
+ const passwordUpdate =async()=>{
     if (password!==''){
         try{
         const user = auth.currentUser;
@@ -47,8 +44,8 @@ const Updatepassword = ({email,
     console.log(password);
  }
 
- useEffect((e)=>{
-    passwordUpdate(e);
+ useEffect(()=>{
+    passwordUpdate();
  },[password])
         
   return (

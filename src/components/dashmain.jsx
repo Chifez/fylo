@@ -1,4 +1,5 @@
 import React from 'react'
+import { icons } from '../data';
 
 const Dashmain = ({upload,setUpload,uploadList,setUploadList,uploadFile}) => {
 
@@ -20,8 +21,8 @@ const Dashmain = ({upload,setUpload,uploadList,setUploadList,uploadFile}) => {
                 <div className='flex flex-col'>
                   <div>
                 <h2>{item?.name} </h2>
-                {/* <img src={item.share} alt="share" />
-                  <img src={item.delete} alt="delete" /> */}
+                  <img src={icons.download} alt="share" />
+                  <img src={icons.delete} alt="delete" />
                   </div>
                 <h2>resume</h2>
                 </div>

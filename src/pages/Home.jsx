@@ -7,7 +7,7 @@ import Team from './Team';
 
 const Home = () => {
   return (
-    <div  className="App overflow-hidden w-full text-white bg-darkbg">
+    <div  className="App overflow-hidden w-full text-white bg-darkbg relative">
       <div id='home' className='lg:h-screen bg-light'>
           <Navbar />
           <Main />

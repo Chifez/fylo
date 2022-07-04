@@ -12,7 +12,8 @@
      twitter:require('./assets/icons/icons8-twitter-48.png'),
      instagram:require('./assets/icons/icons8-instagram-52.png'),
      facebook:require('./assets/icons/icons8-facebook-48 (1).png'),
-
+     download:require('./assets/icons/icons8-download-64.png'),
+     delete:require('./assets/icons/icons8-trash-48.png'),
  }
 
  export const desc = {
