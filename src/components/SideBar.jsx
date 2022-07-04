@@ -9,7 +9,7 @@ const SideBar = ({logOut,name,changeProfile}) => {
               <div>
                   <img src="" alt="" />
                   <h3 className='capitalize'>hello,
-                  {name && name}
+                  {name}
                   </h3>
               </div>
               <div className='md:w-full flex flex-rows md:flex-col justify-between mx-2'>

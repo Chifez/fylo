@@ -74,18 +74,19 @@ function App() {
 const handleSignUp = async(e) =>{
   e.preventDefault()
   try{
-   await createUserWithEmailAndPassword(auth,email,password)
-   .then((userCredential)=>{
-      const currentUser = userCredential.user;
-      changeProfile();
-      setUser(currentUser);
-      setName(user?.displayName);
-      localStorage.setItem("isAuthenticated",'true');
-      navigate('/dashboard')
-      // setPassword('')
-      // setEmail('')
-      //use toastify or an alert system to show succesful login
-    })
+   await createUserWithEmailAndPassword(auth,email,password);
+   changeProfile();
+   handleLogin();
+  //  .then((userCredential)=>{
+  //     const currentUser = userCredential.user;
+  //     setUser(currentUser);
+  //     setName(user?.displayName);
+  //     localStorage.setItem("isAuthenticated",'true');
+  //     navigate('/dashboard')
+  //     // setPassword('')
+  //     // setEmail('')
+  //     //use toastify or an alert system to show succesful login
+  //   })
   }
   catch(error){
     const errorMessage = error.message;
@@ -128,7 +129,6 @@ const logOut =async()=>{
       setUser('');
       //probably set an alert to show the sign out was successful and also navigate out
     })
-
   }
   catch(error){
     const errorMessage = error.message;
