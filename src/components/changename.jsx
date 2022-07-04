@@ -1,12 +1,17 @@
 import React,{useState}from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
 import { Link } from 'react-router-dom'
+import { auth } from '../fire'
 
-const Changename = ({setName,ChangeProfile}) => {
+const Changename = ({setName,ChangeProfile, handleAuth}) => {
  const[updateName, setUpdateName] = useState("")
 
  const updateUserName =()=>{
+  onAuthStateChanged(auth,(currentUser)=>{
     setName(updateName);
     ChangeProfile();
+
+  })
  }
 
  

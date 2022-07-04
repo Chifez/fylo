@@ -9,8 +9,8 @@ import Updatepassword from '../components/updatepassword'
 import Changename from '../components/changename'
 import Settingspages from '../components/settingsPages'
 
-const Dashboard = ({name,setName,logOut,user,email,
-    setEmail, password, setPassword, error, setError, changeProfile}) => {
+const Dashboard = ({name,setName,logOut,user,email,handleAuth, setEmail, password, setPassword, 
+    error, setError, changeProfile }) => {
     const [upload, setUpload] = useState(null)
     const [uploadList,setUploadList] = useState([])
     const [uploadProgress,setUploadProgress] =useState(0)
@@ -67,7 +67,7 @@ const Dashboard = ({name,setName,logOut,user,email,
   return (
       <div className='h-screen md:grid grid-rows-5 grid-flow-row md:grid-flow-col md:grid-cols-5 md:w-screen'>
           <Routes>
-              <Route path='/' element={<SideBar name={name}  logOut={logOut} changeProfile={changeProfile}/>}>
+              <Route path='/' element={<SideBar name={name}  logOut={logOut} changeProfile={changeProfile} handleAuth={handleAuth} />}>
                     <Route index element={<Dashmain upload={upload} setUpload={setUpload} uploadList={uploadList} setUploadList={setUploadList}uploadFile={uploadFile}/>} />
                     <Route path='/settings/*' element ={<Settings
                       />}> 

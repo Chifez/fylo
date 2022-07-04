@@ -28,10 +28,10 @@ const Updatepassword = ({email,
  }
 
  const passwordUpdate =async(e)=>{
-    newPassword(e);
+//    await newPassword(e);
         // const testPassword =  newPassword(e);
     // newPassword(e);
-    if (password!== ''){
+    if (password!==''){
         try{
         const user = auth.currentUser;
         await updatePassword(user,password)
@@ -43,15 +43,13 @@ const Updatepassword = ({email,
         alert('something went wrong')
     }
         console.log(password)
-    }else{
-        alert('opps')
     }
     console.log(password);
  }
 
-//  useEffect((e)=>{
-//     passwordUpdate(e);
-//  },[])
+ useEffect((e)=>{
+    passwordUpdate(e);
+ },[password])
         
   return (
     <div className='mx-auto flex justify-center items-center bg-light h-[40vh] w-[40vw]'>
@@ -66,7 +64,7 @@ const Updatepassword = ({email,
             <input className=' px-2 text-lg outline-none' type="text"  onChange={(e)=>setconfirmPassword(e.target.value)}/>
             </div>
             <div className='flex flex-col'>
-            <button className='px-2 py-1 m-2 bg-btn rounded-md font-medium capitalize' onClick={(e)=>{passwordUpdate(e)}}>update password</button>
+            <button className='px-2 py-1 m-2 bg-btn rounded-md font-medium capitalize' onClick={(e)=>{newPassword(e)}}>update password</button>
             <button className='text-[yellow] underline'><Link to ='/dashboard/settings'>back to settings</Link></button>
             </div>
         </form>

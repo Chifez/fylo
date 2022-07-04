@@ -19,12 +19,16 @@ function App() {
 
     const navigate =useNavigate();
 
-    /************** check for authentication state change using ***********/
+    /************** check for authentication state change ***********/
+const handleAuth = ()=>{
+  onAuthStateChanged(auth,(currentUser)=>{
+      setUser(currentUser);
+      setName(user?.displayName);
+  })
+}
+
     useEffect(()=>{
-      onAuthStateChanged(auth,(currentUser)=>{
-          setUser(currentUser);
-          setName(user?.displayName);
-      })
+      handleAuth();
       console.log(user)
       },[user])
       /*****************************/
@@ -179,6 +183,7 @@ const logOut =async()=>{
                     error={error}
                     user={user}
                     changeProfile={changeProfile}
+                    handleAuth = {handleAuth}
                />
       </ProtectedRoute>}
         
