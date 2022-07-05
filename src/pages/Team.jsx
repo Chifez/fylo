@@ -7,7 +7,7 @@ const Team = () => {
     const{team} =desc
 
   return (
-      <div id='team' className='px-4 py-3 pb-64 bg-darkbg'>
+      <div id='team' className='px-4 py-3 pb-64 bg-darkbg scroll-smooth'>
           <div className=' my-32 grid gap-4 grid-cols-1 lg:grid-cols-2 place-items-center'  data-aos="fade-up" data-aos-duration="1500">
               <img className='w-full h-full border-pool'src ={sync} alt=" " />
               <div className='h-3/5 grid lg:place-items-center'>
