@@ -19,10 +19,12 @@ const Dashmain = ({upload,setUpload,uploadList,setUploadList,uploadFile}) => {
       {uploadList && uploadList.map((item) =>
               <div key={Math.floor(Math.random() * 3)} className="flex flex-col justify-between m-5">
                 <div className='flex flex-col'>
-                  <div>
+                  <div className='flex justify-around items-center'>
                 <h2>{item?.name} </h2>
-                  <img src={icons.download} alt="share" />
-                  <img src={icons.delete} alt="delete" />
+                <div className='flex justify-between' >
+                  <img className='w-5 h-5 object-cover mx-2' src={icons.download} alt="share" />
+                  <img className='w-5 h-5 object-cover mx-2' src={icons.delete} alt="delete" />
+                </div>
                   </div>
                 <h2>resume</h2>
                 </div>
@@ -33,8 +35,8 @@ const Dashmain = ({upload,setUpload,uploadList,setUploadList,uploadFile}) => {
               </div>
       )}
     </div>
-  <form onSubmit={uploadFile}className='flex justify-center items-center bg-[white]'>
-      <button className='absolute bottom-20 text-center font-semibold bottom-5 text-xl px-16 rounded-md bg-btn border-2 border-transparent hover:text-black hover:bg-blue-600'><input className='opacity-0 absolute w-16' type="file" onChange={(e)=>{setUpload(e.target.files[0])}}/>Add new file</button>
+  <form onSubmit={uploadFile} className='flex justify-center items-center bg-[white]'>
+      <button className='absolute bottom-20 text-center font-semibold bottom-15 text-xl px-16 rounded-md bg-btn border-2 border-transparent hover:text-black hover:bg-blue-600'><input className='opacity-0 absolute w-16' type="file" onChange={(e)=>{setUpload(e.target.files[0])}}/>Add new file</button>
       <button type="submit" className='absolute bottom-5 left- bg-[green] my-4 px-12 rounded-md'>upload file</button>
   </form>
 </div>
