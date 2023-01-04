@@ -63,9 +63,9 @@ const Dashmain = ({
 				onSubmit={uploadFile}
 				className="flex justify-center items-center bg-[white]"
 			>
-				<button className="absolute bottom-20 text-center font-semibold bottom-15 text-xl px-16 rounded-md bg-btn border-2 border-transparent hover:text-black hover:bg-blue-600">
+				<button className="relative top-5 text-center font-semibold bottom-15 text-xl px-16 rounded-md bg-btn border-2 border-transparent hover:text-black hover:bg-blue-600">
 					<input
-						className="opacity-0 absolute w-16"
+						className="opacity-0 absolute left-0 w-full"
 						type="file"
 						onChange={(e) => {
 							setUpload(e.target.files[0]);
